@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/EchoRoute.dart';
+import 'package:flutter_app/NewRoute.dart';
+import 'package:flutter_app/RandomWords.dart';
+import 'package:flutter_app/TextRoute.dart';
 
 void main() => runApp(new MyApp());
 
@@ -17,8 +21,12 @@ class MyApp extends StatelessWidget {
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
+      routes: {
+        "new_page": (context) => NewRoute(),
+        "tip_widgets": (context) => EchoRoute("内容固定")
+      },
       home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -95,6 +103,38 @@ class _MyHomePageState extends State<MyHomePage> {
             new Text(
               '$_counter',
               style: Theme.of(context).textTheme.display1,
+            ),
+            FlatButton(
+              child: Text("路由跳转2"),
+              textColor: Colors.green,
+              onPressed: () {
+//                Navigator.pushNamed(context, "new_page");
+//                Navigator.pushNamed(context, "tip_widgets");
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new RandomWords();
+                }));
+//
+//
+//                );
+//
+//                Navigator.push(context,
+//                    new MaterialPageRoute(builder: (context) {
+//                  return new EchoRoute("终极问题");
+//                }));
+              },
+            ),
+            new Image.asset('mine.jpg', package: 'images'),
+            new RandomWords(),
+            FlatButton(
+              child: Text("跳转去Text页面"),
+              textColor: Colors.red,
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new TextRoute();
+                }));
+              },
             ),
           ],
         ),
