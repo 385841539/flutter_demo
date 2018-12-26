@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class EchoRoute extends StatelessWidget {
   EchoRoute(this.tips1);
-  String tips1;
+  final String tips1;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/CheckBoxRoute.dart';
 import 'package:flutter_app/EchoRoute.dart';
+import 'package:flutter_app/FlexLayoutRoute.dart';
+import 'package:flutter_app/ImageRoute.dart';
+import 'package:flutter_app/LinearLayoutRoute.dart';
 import 'package:flutter_app/NewRoute.dart';
 import 'package:flutter_app/RandomWords.dart';
+import 'package:flutter_app/StagLayoutRoute.dart';
 import 'package:flutter_app/TextRoute.dart';
+import 'package:flutter_app/TransFormRoute.dart';
 
 void main() => runApp(new MyApp());
 
@@ -136,6 +142,61 @@ class _MyHomePageState extends State<MyHomePage> {
                 }));
               },
             ),
+            FlatButton(
+              child: Text("跳转去图片页面"),
+              textColor: Colors.green,
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new ImageRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("选择框和输入框"),
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new CheckBoxRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("线性布局和限制布局Box"),
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new LinearLayoutRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("弹性布局"),
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new FlexLayoutRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("流布局"),
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new StagLayoutRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("转换---容器类"),
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new TransFormRoute();
+                }));
+              },
+            )
           ],
         ),
       ),
