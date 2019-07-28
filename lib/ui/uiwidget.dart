@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/provider/01Provider.dart';
 import 'package:flutter_app/ui/CheckBoxRoute.dart';
 import 'package:flutter_app/ui/EchoRoute.dart';
 import 'package:flutter_app/ui/FlexLayoutRoute.dart';
@@ -10,29 +9,9 @@ import 'package:flutter_app/ui/RandomWords.dart';
 import 'package:flutter_app/ui/StagLayoutRoute.dart';
 import 'package:flutter_app/ui/TextRoute.dart';
 import 'package:flutter_app/ui/TransFormRoute.dart';
-import 'package:flutter_app/ui/uiwidget.dart';
-import 'package:provide/provide.dart';
-
-import 'provider/CounterProvider.dart';
-
-void main() {
 
 
-
-  var countp=CountP();
-
-
- var providers= Providers();
-
-
- providers..provide(Provider<CountP>.value(countp));
-
-
-  runApp(ProviderNode(child: new MyApp(), providers: providers));
-
-}
-
-class MyApp extends StatelessWidget {
+class UiWidget extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -53,13 +32,13 @@ class MyApp extends StatelessWidget {
         "new_page": (context) => NewRoute(),
         "tip_widgets": (context) => EchoRoute("内容固定")
       },
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: new UiWIdget(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class UiWIdget extends StatefulWidget {
+  UiWIdget({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -73,10 +52,10 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _UiWIdgetState createState() => new _UiWIdgetState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _UiWIdgetState extends State<UiWIdget> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -123,16 +102,22 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
+            new Text(
+              'You have pushed the button this many times:',
+            ),
+            new Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.display1,
+            ),
             FlatButton(
-              child: Text("跳转去基础UI、布局界面"),
+              child: Text("路由跳转2"),
               textColor: Colors.green,
               onPressed: () {
 //                Navigator.pushNamed(context, "new_page");
 //                Navigator.pushNamed(context, "tip_widgets");
                 Navigator.push(context,
                     new MaterialPageRoute(builder: (context) {
-                  return new UiWidget();
+                  return new RandomWords();
                 }));
 //
 //
@@ -144,39 +129,81 @@ class _MyHomePageState extends State<MyHomePage> {
 //                }));
               },
             ),
-
-
-            Provide<CountP>(builder:(context,chils,cout){
-
-              return     FlatButton(
-                child: Text("跳转去Provider基础界面---${cout.count}"),
-                textColor: Colors.green,
-                onPressed: () {
-//                Navigator.pushNamed(context, "new_page");
-//                Navigator.pushNamed(context, "tip_widgets");
-                  Navigator.push(context,
-                      new MaterialPageRoute(builder: (context) {
-                        return new ProviderTest();
-                      }));
-//
-//
-//                );
-//
-//                Navigator.push(context,
-//                    new MaterialPageRoute(builder: (context) {
-//                  return new EchoRoute("终极问题");
-//                }));
-                },
-              );
-
-            }),
-
-
-
-
+            new Image.asset('mine.jpg', package: 'images'),
+            new RandomWords(),
+            FlatButton(
+              child: Text("跳转去Text页面"),
+              textColor: Colors.red,
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new TextRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("跳转去图片页面"),
+              textColor: Colors.green,
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new ImageRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("选择框和输入框"),
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new CheckBoxRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("线性布局和限制布局Box"),
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new LinearLayoutRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("弹性布局"),
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new FlexLayoutRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("相对布局"),
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new StagLayoutRoute();
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text("转换---容器类"),
+              onPressed: () {
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new TransFormRoute();
+                }));
+              },
+            )
           ],
         ),
       ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: new Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
