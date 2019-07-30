@@ -16,9 +16,17 @@ dependencies:
 
   provide: ^1.0.2
 
+  flutter_base_widget:
+      git:
+        url: git://github.com/385841539/flutter_BaseWidget.git
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+
+
 
 
 

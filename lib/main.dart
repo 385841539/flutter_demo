@@ -11,6 +11,8 @@ import 'package:flutter_app/ui/StagLayoutRoute.dart';
 import 'package:flutter_app/ui/TextRoute.dart';
 import 'package:flutter_app/ui/TransFormRoute.dart';
 import 'package:flutter_app/ui/uiwidget.dart';
+import 'package:flutter_base_widget/test_package/asinnerpage/TabBarBottomPageWidget.dart';
+import 'package:flutter_base_widget/utils/sp_utils/sp_utils.dart';
 import 'package:provide/provide.dart';
 
 import 'provider/CounterProvider.dart';
@@ -19,6 +21,7 @@ void main() {
 
 
 
+  SpUtils().init(); //初始化 sp
   var countp=CountP();
 
 
@@ -81,6 +84,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
+
+
+
+//    SpUtils();
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
@@ -145,6 +152,27 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
 
+
+            FlatButton(
+              child: Text("跳转去base库"),
+              textColor: Colors.green,
+              onPressed: () {
+//                Navigator.pushNamed(context, "new_page");
+//                Navigator.pushNamed(context, "tip_widgets");
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                      return new TabBarWidget();
+                    }));
+//
+//
+//                );
+//
+//                Navigator.push(context,
+//                    new MaterialPageRoute(builder: (context) {
+//                  return new EchoRoute("终极问题");
+//                }));
+              },
+            ),
 
             Provide<CountP>(builder:(context,chils,cout){
 
