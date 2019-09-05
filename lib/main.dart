@@ -11,6 +11,8 @@ import 'package:flutter_app/ui/StagLayoutRoute.dart';
 import 'package:flutter_app/ui/TextRoute.dart';
 import 'package:flutter_app/ui/TransFormRoute.dart';
 import 'package:flutter_app/ui/uiwidget.dart';
+import 'package:flutter_packagetest1/test1.dart';
+import 'package:flutter_packagetest1/F1Page.dart';
 import 'package:provide/provide.dart';
 
 import 'provider/CounterProvider.dart';
@@ -18,6 +20,7 @@ import 'provider/CounterProvider.dart';
 void main() {
 
 
+  Test1();
 
   var countp=CountP();
 
@@ -133,6 +136,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(context,
                     new MaterialPageRoute(builder: (context) {
                   return new UiWidget();
+                }));
+//
+//
+//                );
+//
+//                Navigator.push(context,
+//                    new MaterialPageRoute(builder: (context) {
+//                  return new EchoRoute("终极问题");
+//                }));
+              },
+            ),
+            FlatButton(
+              child: Text("跳转去FPage1"),
+              textColor: Colors.green,
+              onPressed: () {
+//                Navigator.pushNamed(context, "new_page");
+//                Navigator.pushNamed(context, "tip_widgets");
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) {
+                  return new FPage1();
                 }));
 //
 //
